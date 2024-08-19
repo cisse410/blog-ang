@@ -1,0 +1,58 @@
+<mat-card class="post-form">
+  <mat-card-header>
+    <mat-card-title>Ajouter un nouveau post</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div>
+      <form action="" [formGroup]="postForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Titre du post</mat-label>
+          <input type="text" matInput formControlName="title" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Contenu du post</mat-label>
+          <textarea type="text" matInput formControlName="content" rows="5">
+          </textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>l'URL du post</mat-label>
+          <input type="text" matInput formControlName="image" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Auteur</mat-label>
+          <input type="text" matInput formControlName="author" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Tags</mat-label>
+          <mat-chip-grid #chipGrid aria-label="Tags">
+            <mat-chip-row
+              *ngFor="let tag of tags; let i = index"
+              (removed)="removeTag(tag)"
+            >
+              {{ tag }}
+              <button matChipRemove [attr.aria-label]="'remove ' + tag">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+            <input
+              placeholder="Ajouter un tag..."
+              [matChipInputFor]="chipGrid"
+              (matChipInputTokenEnd)="addTag($event)"
+            />
+          </mat-chip-grid>
+        </mat-form-field>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            class="btn-add"
+            [disabled]="!postForm.valid"
+          >
+            Ajouter
+          </button>
+        </mat-card-actions>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
