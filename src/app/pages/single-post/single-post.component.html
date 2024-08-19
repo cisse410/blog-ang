@@ -24,7 +24,7 @@
       </mat-chip-set>
     </mat-card-footer>
     <mat-card-actions align="end">
-      <button mat-raised-button>
+      <button mat-raised-button (click)="likePost()">
         <mat-icon>favorite</mat-icon>{{ post.likeCount }}
       </button>
 

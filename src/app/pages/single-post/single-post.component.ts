@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PostService } from '../../service/post.service';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-single-post',
@@ -32,16 +33,24 @@ export class SinglePostComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+    private snackBar: MatSnackBar
   ) {}
   ngOnInit(): void {
-    this.getPostId();
+    this.getPostById();
   }
 
-  getPostId(): void {
+  getPostById(): void {
     this.postService.getPostById(this.id).subscribe((response) => {
       this.post = response;
       console.log(response);
+    });
+  }
+
+  likePost(): void {
+    this.postService.likePost(this.id).subscribe((response) => {
+      this.snackBar.open("Merci d'avoir aimer cet article", 'Fermer');
+      this.getPostById();
     });
   }
 }
