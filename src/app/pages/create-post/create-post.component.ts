@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterModule } from '@angular/router';
+import { PostService } from '../../service/post.service';
 
 @Component({
   selector: 'app-create-post',
@@ -39,7 +40,8 @@ export class CreatePostComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private postService: PostService
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +51,21 @@ export class CreatePostComponent implements OnInit {
       image: [null, [Validators.required]],
       author: [null, [Validators.required]],
     });
+  }
+
+  createPost() {
+    const data = this.postForm.value;
+    data.tags = this.tags;
+    this.postService.createPost(data).subscribe(
+      (response) => {
+        this.snackBar.open('Articlé crée avec succés', 'Fermer');
+        this.router.navigateByUrl('');
+        console.log(response);
+      },
+      (error) => {
+        this.snackBar.open('Oops! Something went wrong', 'Fermer');
+      }
+    );
   }
 
   addTag(event: any) {
