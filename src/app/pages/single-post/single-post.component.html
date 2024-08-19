@@ -1,0 +1,37 @@
+<div class="post-card" *ngIf="post">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="avatar-img"></div>
+      <mat-card-title>{{ post.title }}</mat-card-title>
+      <mat-card-subtitle
+        >Publié par {{ post.author }} à
+        {{ post.createdAt | date : "medium" }}</mat-card-subtitle
+      >
+    </mat-card-header>
+    <img
+      [src]="post.image"
+      mat-card-image
+      alt="post.title"
+      class="post-img"
+      height="300"
+    />
+    <mat-card-content>
+      {{ post.content }}
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-chip-set>
+        <mat-chip *ngFor="let tag of post.tags">{{ tag }}</mat-chip>
+      </mat-chip-set>
+    </mat-card-footer>
+    <mat-card-actions align="end">
+      <button mat-raised-button>
+        <mat-icon>favorite</mat-icon>{{ post.likeCount }}
+      </button>
+
+      <button mat-raised-button style="margin-left: 5px">
+        {{ post.viewCount }}<mat-icon>remove_red_eye</mat-icon>
+      </button>
+      <button mat-raised-button><mat-icon>share</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+</div>

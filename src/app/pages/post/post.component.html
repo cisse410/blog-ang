@@ -36,7 +36,12 @@
       <button mat-raised-button style="margin-left: 5px">
         {{ post.viewCount }}<mat-icon>remove_red_eye</mat-icon>
       </button>
-      <button mat-raised-button color="primary" style="margin-left: 5px">
+      <button
+        mat-raised-button
+        color="primary"
+        style="margin-left: 5px"
+        routerLink="/post/{{ post.id }}"
+      >
         <mat-icon>library_books</mat-icon>Voir plus
       </button>
     </mat-card-actions>
