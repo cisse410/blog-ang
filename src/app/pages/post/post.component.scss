@@ -1,0 +1,20 @@
+.posts-card {
+  margin: 16px;
+  min-width: 60%;
+  padding-bottom: 30px;
+}
+mat-card {
+  padding: 10px;
+}
+
+.post-avatar {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
+  background-size: cover;
+}
+
+.post-img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  margin-top: 15px;
+}

@@ -12,4 +12,8 @@ export class PostService {
   createPost(post: any): Observable<any> {
     return this.http.post(BASE_API_URL + '/posts', post);
   }
+
+  getAllPosts(): Observable<any> {
+    return this.http.get(BASE_API_URL + '/posts');
+  }
 }
