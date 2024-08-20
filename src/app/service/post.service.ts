@@ -24,4 +24,8 @@ export class PostService {
   likePost(id: number): Observable<any> {
     return this.http.put(BASE_API_URL + '/post/' + id + '/like', {});
   }
+
+  searchPost(title: string) {
+    return this.http.get(BASE_API_URL + '/posts/search/' + title);
+  }
 }
