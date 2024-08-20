@@ -1,0 +1,31 @@
+.register-container {
+  width: 500px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+mat-card-header {
+  margin: 12px;
+  padding: 12px;
+  justify-content: center;
+}
+mat-divider {
+  margin: 15px;
+  padding: 12px;
+}
+
+mat-form-field {
+  display: block;
+}
+
+mat-card-actions,
+mat-card-footer {
+  margin: auto;
+}
+
+.btn-login {
+  color: blue;
+}
+.btn-login:hover {
+  color: blue;
+}

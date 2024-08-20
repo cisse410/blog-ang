@@ -1,0 +1,27 @@
+.login-container {
+  margin: auto;
+  width: 500px;
+  margin-top: 150px;
+}
+
+mat-card-header {
+  padding-bottom: 15px;
+  justify-content: center;
+}
+
+mat-divider {
+  padding: 12px;
+}
+
+mat-form-field {
+  display: block;
+}
+
+mat-card-actions,
+mat-card-footer {
+  margin: auto;
+}
+
+.btn-sign-in {
+  color: blue;
+}
