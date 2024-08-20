@@ -34,30 +34,44 @@
       <button mat-raised-button><mat-icon>share</mat-icon></button>
     </mat-card-actions>
   </mat-card>
-</div>
 
-<mat-card class="comment-container">
-  <mat-card-content>
-    <h3>Publier un commentaire</h3>
-    <div>
-      <form action="" [formGroup]="commentForm">
-        <mat-form-field appearance="outline">
-          <mat-label>Username</mat-label>
-          <input type="text" matInput formControlName="postedBy" />
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Publier votre commentaire ici</mat-label>
-          <textarea matInput formControlName="content"> </textarea>
-        </mat-form-field>
-        <button
-          mat-raised-button
-          [disabled]="!commentForm.valid"
-          color="primary"
-          (click)="commentPost()"
-        >
-          Publier
-        </button>
-      </form>
-    </div>
-  </mat-card-content>
-</mat-card>
+  <mat-card class="comment-card">
+    <mat-card-content>
+      <h3>Publier un commentaire</h3>
+      <div>
+        <form action="" [formGroup]="commentForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput formControlName="postedBy" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Publier votre commentaire ici</mat-label>
+            <textarea matInput formControlName="content"> </textarea>
+          </mat-form-field>
+          <button
+            mat-raised-button
+            [disabled]="!commentForm.valid"
+            color="primary"
+            (click)="commentPost()"
+          >
+            Publier
+          </button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div style="margin-top: 12px">
+    <h3>Commentaires</h3>
+    <mat-card *ngFor="let comment of comments" style="margin-top: 10px">
+      <mat-card-header>
+        <div mat-card-avatar class="avatar-img"></div>
+        <mat-card-title>{{ comment.postedBy }}</mat-card-title>
+        <mat-card-subtitle>{{
+          comment.createdAt | date : "medium"
+        }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>{{ comment.content }}</mat-card-content>
+    </mat-card>
+  </div>
+</div>

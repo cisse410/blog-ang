@@ -17,4 +17,8 @@ export class CommentService {
       params,
     });
   }
+
+  getCommentById(postId: number) {
+    return this.http.get(BASE_API_URL + '/comment/' + postId);
+  }
 }
